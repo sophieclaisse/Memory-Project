@@ -1,0 +1,12 @@
+#play {
+    width: 200px;
+    height: 40px;
+}
+
+#image {
+    width: 300px;
+    height: 300px;
+    margin: 30px;
+    border: 2px solid midnightblue;
+    border-radius: 10px;
+}
