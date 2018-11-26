@@ -31,33 +31,35 @@ console.log(Tab);
 base();
 */
 
-
+var Tab2= [];
 
 // TO START THE GAME : RANDOM FUNCTION TO CHOOSE EACH ELEMENT PLACE AND EVENT CLICK
 
 
 document.getElementById("play").addEventListener("click", function () {
 
-
    // var random =  Math.round(Math.random()* 11)= [i];
    // console.log(random);
 
     for (var i = 0; i <=11; i++) {
 
-        var random = Math.round(Math.random()* 11);
+        var random = Math.round(Math.random() * 11);
         console.log(random);
 
-
-        document.getElementById("jeu").innerHTML += '<img id="image" src="' + Tab[random].verso + '" />';
-        //Tab.splice(Tab.indexOf(random), 1);
+        document.getElementById("jeu").innerHTML+=  '<img id="image" src="' + Tab[random].recto + '" />'
 
     }
 
-
-
-
-
 });
+
+
+
+
+// document.getElementById("jeu").innerHTML += '<img id="image" src="' + Tab[random].verso + '" />';
+
+
+
+
 
 
 
