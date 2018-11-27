@@ -50,7 +50,7 @@ function shuffle(param){
 
 shuffle(Tab);
 
-//console.log(Tab2);
+console.log(Tab2);
 
 
 // FUNCTION TO START THE GAME - create img "recto"
@@ -65,12 +65,11 @@ function start () {
             img.className = "image";
             img.src = Tab2[j].recto;
 
+            img.face= Tab2[j].recto;
             img.name = Tab2[j].verso;
             img.title = Tab2[j].titre;
 
             container.appendChild(img);
-
-
         }
         document.getElementById("play").disabled = true;
     });
@@ -78,8 +77,11 @@ function start () {
 start();
 
 //FUNCTION PLAY - EVENT- see img "verso"
-var result= 0;
 
+
+
+
+var result= 0;
 var test=2;
 function playGame() {
 
@@ -99,11 +101,11 @@ function playGame() {
 
                 if (test==0 && TabEvent[0]== TabEvent[1] ){
                     alert ("gagné");
-
+                    e.target.style.visibility= "hidden";
                 }
                 if (test==0 && TabEvent[0]!= TabEvent[1] ) {
                     alert ("perdu");
-
+                    e.target.src= e.target.face;
                 }
             });
         }
@@ -113,42 +115,11 @@ playGame();
 
 
 
-
-
-
-
-/*while (TabEvent.length>0 && TabEvent.length<2){
-
-                   if (Tab[0]== TabEvent[1] && Tab[0]!=0){
-                       alert ("gagné");
-                   }
-
-                   if (TabEvent[0]!= TabEvent[1] && TabEvent[1]!=0){
-                       alert ("perdu");
-                       e.target.src= img.src;
-
-                   }
-               }*/
-
-/*for (var y=0; y<=2); y++){
-
-    if (TabEvent[0].result==TabEvent[1]){
-        alert ("gagné");
-    }
-    else {
-        alert ("perdu");
-    }
-}*/
-
-
 /*function reset (){
-
     document.getElementById("reset").addEventListener("click", function (){
-
+        document.getElementById("play").disabled = false;
         shuffle(Tab);
         playGame();
-
-
     });
 }
 */
