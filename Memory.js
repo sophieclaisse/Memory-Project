@@ -7,19 +7,19 @@ function jeu (recto, verso , titre){
 
 var Tab= [];
 
-var vis1= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Abeille.png","Abeille"));
-var vis2= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Abeille.png","Abeille"));
-var vis3= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Chat.jpg","Chat"));
-var vis4= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Chat.jpg","Chat"));
-var vis5= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Coq.png","Coq"));
-var vis6= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Coq.png","Coq"));
-var vis7= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Girafe.png","Girafe"));
-var vis8= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Girafe.png","Girafe"));
-var vis9= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Lion.png","Lion"));
-var vis10= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Lion.png","Lion"));
-var vis11= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Pingouin.png","Pingouin"));
-var vis12= Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Pingouin.png","Pingouin"));
-console.log(Tab);
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Abeille.png","Abeille"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Abeille.png","Abeille"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Chat.jpg","Chat"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Chat.jpg","Chat"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Coq.png","Coq"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Coq.png","Coq"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Girafe.png","Girafe"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Girafe.png","Girafe"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Lion.png","Lion"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Lion.png","Lion"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Pingouin.png","Pingouin"));
+Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Pingouin.png","Pingouin"));
+//console.log(Tab);
 
 //UPLOAD FUNCTION
 /*function base () {
@@ -33,30 +33,48 @@ base();
 
 var Tab2= [];
 
-// TO START THE GAME : RANDOM FUNCTION TO CHOOSE EACH ELEMENT PLACE AND EVENT CLICK
+var rand;
 
+//RANDOM FUNCTION
+function randomNumber(maxLength){
+    return Math.floor(Math.random() * maxLength);
+}
 
-document.getElementById("play").addEventListener("click", function () {
-
-   // var random =  Math.round(Math.random()* 11)= [i];
-   // console.log(random);
-
-    for (var i = 0; i <=11; i++) {
-
-        var random = Math.round(Math.random() * 11);
-        console.log(random);
-
-        document.getElementById("jeu").innerHTML+=  '<img id="image" src="' + Tab[random].recto + '" />'
-
+//FUNCTION  TO PUT RANDOM IN A NEW TAB WITHOUT DUPLICATES CHOICES
+function shuffle(param){
+    for (let i = 0; i < param.length; i++)
+    {
+        rand = randomNumber(param.length);
+        if (Tab2.indexOf(param[rand]) === -1)
+        {
+            Tab2.push(param[rand]);
+        } else {
+            i--;
+        }
     }
 
+    return Tab2;
+}
+
+shuffle(Tab);
+
+console.log(Tab2);
+
+
+// TO START THE GAME
+document.getElementById("play").addEventListener("click", function () {
+
+    for (var j=0; j<Tab2.length; j++) {
+        document.getElementById("jeu"+[j]).innerHTML += '<img id="image" src="' + Tab2[j].verso + '" />'//A METTRE RECTO AU DEMARRAGE
+    }
 });
 
 
 
+document.getElementById("image").addEventListener("click", function(){
 
-// document.getElementById("jeu").innerHTML += '<img id="image" src="' + Tab[random].verso + '" />';
 
+});
 
 
 
