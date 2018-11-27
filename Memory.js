@@ -94,6 +94,8 @@ function playGame() {
                 e.target.src = e.target.name;
 
                 result= e.target.title;//reaction
+                //ESSAI result= e.target.title + e.target + e.target.face;
+                //stocker dans Tab3 les objetsentiers avec photos puis afficher ou effacer les donnees TAB3[0] et Tab[1]
                 TabEvent.push(result);
                 //console.log(TabEvent);
                 test--;
