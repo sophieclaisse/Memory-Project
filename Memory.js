@@ -30,13 +30,13 @@ var TabEvent= [];
 var rand;
 
 
-
-function Initiate (){
+function Initiate () {
 
 //RANDOM FUNCTION
     function randomNumber(maxLength) {
         return Math.floor(Math.random() * maxLength);
     }
+
 
 //FUNCTION  TO PUT RANDOM IN A NEW TAB WITHOUT DUPLICATES CHOICES
     function shuffle(param) {
@@ -71,9 +71,7 @@ function Initiate (){
 
     start();
 
-}
 
-Initiate ();
 
 //FUNCTION PLAY - EVENT- see img "verso"
 
@@ -90,19 +88,16 @@ function playGame() {
         for (var x = 0; x < cartes.length; x++) {
 
             var face= Tab2[x].recto;
-            console.log(face);
+            //console.log(face);
 
-            cartes[x].addEventListener("click", function (e) {
+            cartes[x].addEventListener("click", function (e) {//RETURN IMG
 
-                console.log(e.target);
+                //console.log(e.target);
 
 
                 TabEvent.push(e.target);
-                //console.log(TabEvent);
-
+              console.log(TabEvent);
                 e.target.src = e.target.name;//CIBLE SOURCE IMG = CIBLE
-
-
                 test--;
 
 
@@ -113,11 +108,14 @@ function playGame() {
 
                     test=2;
                     TabEvent=[];
+                    console.log(TabEvent);
                     total++;
-                    console.log(total);
+                    //console.log(total);
 
                     if (total==6){
                         document.getElementById("modal").style.top = "160px";
+                        test=2;
+                        reset();
 
                     }
 
@@ -133,6 +131,10 @@ function playGame() {
                     },1000);
 
                 }
+
+                if (test<0){// LIMIT TWO CLIKS ON IMG
+                    e.target.src=face;
+                }
             });
         }
 
@@ -141,13 +143,18 @@ playGame();
 
 
 
+
 function game () {
     for (var j = 0; j < Tab2.length; j++) {
+
+        document.getElementById("jeu" + [j]).innerHTML= "";
 
         var container = document.getElementById("jeu" + [j]);//CONTAINER = ALL DIV NAMED "JEU"
 
         var img = document.createElement("img");//CREATE IMG WITH IMAGE RECTO FROM TAB2
         img.className = "image";
+
+
         img.src = Tab2[j].recto;
 
         //img.face = Tab2[j].recto;
@@ -156,37 +163,36 @@ function game () {
         img.title = Tab2[j].titre;
 
         container.appendChild(img);//SHOW IMG  IN HTML
+        //console.log(img);
     }
 }
 
 
 
 
-function reset(){
+function reset(){ //FAIRE PAGE RESULTAT (Parties jouées, parties gagnées et parties perdues) + RESET
     document.getElementById("rejouer").addEventListener("click", function (){
 
-            document.getElementById("modal").style.top = "-600px";
-            document.getElementById("play").disabled = false;
+            document.getElementById("modal").style.top = "-600px";//APPARITION POP UP
+            document.getElementById("play").disabled = false; //remise en service play
+            Tab2= [];//vider Tab2
+            //console.log(Tab2);
+        Initiate();
     });
-    //Initiate();
-    //playGame();
+
+    //APPELER TOUTE FONCTION
+   // start (); //appeler fonction click play pour activer le bouton play
+   // playGame();// appeler fonction pour retourner cartes et consequences
+
 }
-reset();
 
-/*function reset (){
-    document.getElementById("reset").addEventListener("click", function (){
-        document.getElementById("play").disabled = false;
-        shuffle(Tab);
-        playGame();
-    });
+
+
 }
-*/
+Initiate();
 
 
-// LIMITER NOMBRE DE CLICK
-//FAIRE PAGE RESULTAT (Parties jouées, parties gagnées et parties perdues) + RESET
+
+
 //FAIRE TEST UNITAIRES
 //FAIRE DIAGRAMME
-
-
-
