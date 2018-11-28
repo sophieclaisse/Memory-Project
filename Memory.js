@@ -69,9 +69,6 @@ start();
 //FUNCTION PLAY - EVENT- see img "verso"
 
 
-
-
-
 var test=2;
 
 
@@ -100,9 +97,8 @@ function playGame() {
                 test--;
 
 
-                if (test==0 && TabEvent[0].title== TabEvent[1].title ){
+                if (test==0 && TabEvent[0].title== TabEvent[1].title ){ //WIN
 
-                   // alert ("gagné");
                     TabEvent[0].style.visibility= "hidden";
                     e.target.style.visibility="hidden";
 
@@ -110,17 +106,14 @@ function playGame() {
                     TabEvent=[];
                 }
 
-                if (test==0 && TabEvent[0].title != TabEvent[1].title ) {
+                if (test==0 && TabEvent[0].title != TabEvent[1].title ) { // loose
 
-                    alert ("perdu");
-
-                    // Utiliser setTimeout
-
-                    TabEvent[0].src = face;
-                    TabEvent=[];
-
-                    test=2;
-                    e.target.src= face;
+                    setTimeout (function () { //show two cards 1,5sc
+                        TabEvent[0].src = face;
+                        e.target.src= face;
+                        TabEvent=[];
+                        test=2;
+                    },1500);
 
                 }
             });
