@@ -19,7 +19,7 @@ h2{
     margin: 35px !important;
 }
 
-#play, #reset {
+#play, #rejouer {
     width: 200px;
     height: 40px;
     margin: 40px;
@@ -33,3 +33,16 @@ h2{
     border-radius: 10px;
 }
 
+#modal {
+    height: 500px;
+    width: 60%;
+    background-color: #00374c;
+    text-align: center;
+    color: white;
+    padding-top: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: -600px;
+    left: 20%;
+    transition: 0.5s;
+}

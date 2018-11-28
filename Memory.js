@@ -29,48 +29,57 @@ var TabEvent= [];
 
 var rand;
 
-//RANDOM FUNCTION
-function randomNumber(maxLength){
-    return Math.floor(Math.random() * maxLength);
-}
 
-//FUNCTION  TO PUT RANDOM IN A NEW TAB WITHOUT DUPLICATES CHOICES
-function shuffle(param){
-    for (let i = 0; i < param.length; i++)
-    {
-        rand = randomNumber(param.length);
-        if (Tab2.indexOf(param[rand]) === -1)// IF DOESN'T EXISTS IN TAB2 PUSH
-        {
-            Tab2.push(param[rand]);
-        } else { // IF EXISTS IN TAB2 DON'T PUSH A DUPLICATE CHOICE
-            i--;
-        }
+
+function Initiate (){
+
+//RANDOM FUNCTION
+    function randomNumber(maxLength) {
+        return Math.floor(Math.random() * maxLength);
     }
 
-    return Tab2;
-}
+//FUNCTION  TO PUT RANDOM IN A NEW TAB WITHOUT DUPLICATES CHOICES
+    function shuffle(param) {
+        for (let i = 0; i < param.length; i++) {
+            rand = randomNumber(param.length);
+            if (Tab2.indexOf(param[rand]) === -1)// IF DOESN'T EXISTS IN TAB2 PUSH
+            {
+                Tab2.push(param[rand]);
+            } else { // IF EXISTS IN TAB2 DON'T PUSH A DUPLICATE CHOICE
+                i--;
+            }
+        }
 
-shuffle(Tab);
+        return Tab2;
+    }
 
-console.log(Tab2);
+    shuffle(Tab);
+
+    console.log(Tab2);
+
 
 
 // FUNCTION TO START THE GAME - create img "recto"
-function start () {
+    function start() {
 
-    document.getElementById("play").addEventListener("click", function () {
+        document.getElementById("play").addEventListener("click", function () {
 
-        game();
-        document.getElementById("play").disabled = true;
-    });
+            game();
+            document.getElementById("play").disabled = true;
+        });
+    }
+
+    start();
+
 }
-start();
+
+Initiate ();
 
 //FUNCTION PLAY - EVENT- see img "verso"
 
 
 var test=2;
-
+var total=0;
 
 function playGame() {
 
@@ -104,16 +113,24 @@ function playGame() {
 
                     test=2;
                     TabEvent=[];
+                    total++;
+                    console.log(total);
+
+                    if (total==6){
+                        document.getElementById("modal").style.top = "160px";
+
+                    }
+
                 }
 
                 if (test==0 && TabEvent[0].title != TabEvent[1].title ) { // loose
 
-                    setTimeout (function () { //show two cards 1,5sc
+                    setTimeout (function () { //show two cards 1sc
                         TabEvent[0].src = face;
                         e.target.src= face;
                         TabEvent=[];
                         test=2;
-                    },1500);
+                    },1000);
 
                 }
             });
@@ -142,6 +159,20 @@ function game () {
     }
 }
 
+
+
+
+function reset(){
+    document.getElementById("rejouer").addEventListener("click", function (){
+
+            document.getElementById("modal").style.top = "-600px";
+            document.getElementById("play").disabled = false;
+    });
+    //Initiate();
+    //playGame();
+}
+reset();
+
 /*function reset (){
     document.getElementById("reset").addEventListener("click", function (){
         document.getElementById("play").disabled = false;
@@ -151,6 +182,11 @@ function game () {
 }
 */
 
+
+// LIMITER NOMBRE DE CLICK
+//FAIRE PAGE RESULTAT (Parties jouées, parties gagnées et parties perdues) + RESET
+//FAIRE TEST UNITAIRES
+//FAIRE DIAGRAMME
 
 
 
