@@ -71,42 +71,56 @@ start();
 
 
 
-var result= 0;
+
 var test=2;
-var enleverTabEvent;
+
+
 function playGame() {
 
         var cartes = document.getElementsByClassName("carte");
 
+
+
         for (var x = 0; x < cartes.length; x++) {
+
+            var face= Tab2[x].recto;
+            console.log(face);
+
             cartes[x].addEventListener("click", function (e) {
-                //console.log(e.target);
+
+                console.log(e.target);
+
 
                 TabEvent.push(e.target);
                 //console.log(TabEvent);
+
                 e.target.src = e.target.name;//CIBLE SOURCE IMG = CIBLE
 
-                //result=  e.target.title;//reaction
-                //console.log(result);
-                //ESSAI result= e.target.title + e.target + e.target.face;
-                //stocker dans Tab3 les objetsentiers avec photos puis afficher ou effacer les donnees TAB3[0] et Tab[1]
-                //TabEvent.push(result);
 
-                //console.log(TabEvent);
                 test--;
 
 
                 if (test==0 && TabEvent[0].title== TabEvent[1].title ){
-                    alert ("gagné");
 
+                   // alert ("gagné");
+                    TabEvent[0].style.visibility= "hidden";
+                    e.target.style.visibility="hidden";
+
+                    test=2;
+                    TabEvent=[];
                 }
+
                 if (test==0 && TabEvent[0].title != TabEvent[1].title ) {
 
-                    //game();
                     alert ("perdu");
+
+                    // Utiliser setTimeout
+
+                    TabEvent[0].src = face;
                     TabEvent=[];
-                    console.log(TabEvent);
+
                     test=2;
+                    e.target.src= face;
 
                 }
             });
@@ -127,6 +141,7 @@ function game () {
         img.src = Tab2[j].recto;
 
         //img.face = Tab2[j].recto;
+        img.setAttribute("face",Tab2[j].recto);
         img.name = Tab2[j].verso;
         img.title = Tab2[j].titre;
 
