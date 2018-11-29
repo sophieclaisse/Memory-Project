@@ -25,12 +25,14 @@ Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Pingouin.png","Pingouin"));
 var Tab2= [];
 
 
-var TabEvent= [];
+
 
 var rand;
 
 
 function Initiate () {
+
+    var TabEvent= [];
 
 //RANDOM FUNCTION
     function randomNumber(maxLength) {
@@ -108,7 +110,7 @@ function playGame() {
 
                     test=2;
                     TabEvent=[];
-                    console.log(TabEvent);
+                   // console.log(TabEvent);
                     total++;
                     //console.log(total);
 
@@ -137,7 +139,7 @@ function playGame() {
                 }
             });
         }
-
+console.log(test);
 }
 playGame();
 
@@ -150,6 +152,8 @@ function game () {
         document.getElementById("jeu" + [j]).innerHTML= "";
 
         var container = document.getElementById("jeu" + [j]);//CONTAINER = ALL DIV NAMED "JEU"
+
+
 
         var img = document.createElement("img");//CREATE IMG WITH IMAGE RECTO FROM TAB2
         img.className = "image";
@@ -167,24 +171,24 @@ function game () {
     }
 }
 
+    function reset(){ //FAIRE PAGE RESULTAT (Parties jouées, parties gagnées et parties perdues) + RESET
 
+        document.getElementById("rejouer").addEventListener("click", function (){
 
-
-function reset(){ //FAIRE PAGE RESULTAT (Parties jouées, parties gagnées et parties perdues) + RESET
-    document.getElementById("rejouer").addEventListener("click", function (){
 
             document.getElementById("modal").style.top = "-600px";//APPARITION POP UP
+
             document.getElementById("play").disabled = false; //remise en service play
+
             Tab2= [];//vider Tab2
+
             //console.log(Tab2);
-        Initiate();
-    });
 
-    //APPELER TOUTE FONCTION
-   // start (); //appeler fonction click play pour activer le bouton play
-   // playGame();// appeler fonction pour retourner cartes et consequences
+            Initiate();
 
-}
+        });
+
+    }
 
 
 
@@ -196,3 +200,6 @@ Initiate();
 
 //FAIRE TEST UNITAIRES
 //FAIRE DIAGRAMME
+
+
+//FONCTRION RANDOM OK - FONCTION DEFINITION NEW TAB 2 OK - FONCTION START - ok - FONCTION GAME OK DANS 1 pas dans 2 - FONCTION RESET PAS OK CF FONCTION GAME
