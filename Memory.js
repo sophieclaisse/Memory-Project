@@ -81,6 +81,7 @@ function Initiate () {
 var test=2;
 var total=0;
 
+
 function playGame() {
 
         var cartes = document.getElementsByClassName("carte");
@@ -202,4 +203,3 @@ Initiate();
 //FAIRE DIAGRAMME
 
 
-//FONCTRION RANDOM OK - FONCTION DEFINITION NEW TAB 2 OK - FONCTION START - ok - FONCTION GAME OK DANS 1 pas dans 2 - FONCTION RESET PAS OK CF FONCTION GAME
