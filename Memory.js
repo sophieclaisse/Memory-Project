@@ -1,11 +1,11 @@
 
-function jeu (recto, verso , titre){
+function jeu (recto, verso , titre){  // create objects
     this.recto= recto;
     this.verso= verso;
     this.titre= titre;
 }
 
-var Tab= [];
+var Tab= []; //object Tab with all original images, with back face, front face and Identity
 
 Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Abeille.png","Abeille"));
 Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Abeille.png","Abeille"));
@@ -22,17 +22,16 @@ Tab.push(new jeu("VISUELS/Face.jpg","VISUELS/Pingouin.png","Pingouin"));
 //console.log(Tab);
 
 
-var Tab2= [];
-
-
-
+var Tab2= []; //Tab to push the objects with random order
 
 var rand;
 
-
+//INITIATE () FUNCTION RUNS FOR ALL GAME
 function Initiate () {
 
-    var TabEvent= [];
+    var TabEvent= []; //Tab to push and stock the two clicked images identity (for next comparison)
+
+
 
 //RANDOM FUNCTION
     function randomNumber(maxLength) {
@@ -64,9 +63,9 @@ function Initiate () {
 // FUNCTION TO START THE GAME - create img "recto"
     function start() {
 
-        document.getElementById("play").addEventListener("click", function () {
+        document.getElementById("play").addEventListener("click", function () {//Event click play button to start the game
 
-            game();
+            game(); // Function called to show/create images on html
             document.getElementById("play").disabled = true;
         });
     }
@@ -77,16 +76,12 @@ function Initiate () {
 
 //FUNCTION PLAY - EVENT- see img "verso"
 
-
-var test=2;
+var test=2; // clicks numbers to limit - decrease when user click on img
 var total=0;
-
 
 function playGame() {
 
         var cartes = document.getElementsByClassName("carte");
-
-
 
         for (var x = 0; x < cartes.length; x++) {
 
@@ -94,35 +89,35 @@ function playGame() {
             //console.log(face);
 
 
-            cartes[x].addEventListener("click", function (e) {//RETURN IMG
+            cartes[x].addEventListener("click", function (e) {//Event to return "cards"
 
                 //console.log(e.target);
 
-                if (e.target != TabEvent[0]){
-                TabEvent.push(e.target);
-                console.log(TabEvent);
-                e.target.src = e.target.name;//CIBLE SOURCE IMG = CIBLE
+                if (e.target != TabEvent[0]){ // to be sure that second target is diferent from first
+                TabEvent.push(e.target);// To push target in Tab Event
+                //console.log(TabEvent);
+                e.target.src = e.target.name; //change image from back to front (faces)
                 test--;
                 }
 
-    if(TabEvent[1] && TabEvent[0]) {
+    if(TabEvent[1] && TabEvent[0]) {// To define two answers pushed in TabEvent to do comparisons
         if (TabEvent[0].id != TabEvent[1].id) {
 
-            if (test == 0 && TabEvent[0].title == TabEvent[1].title) { //WIN
+            if (test == 0 && TabEvent[0].title == TabEvent[1].title) { //Win system: when user founds two equals cards
 
-                TabEvent[0].style.visibility = "hidden";
-                e.target.style.visibility = "hidden";
+                TabEvent[0].style.visibility = "hidden";//to hide image1 if two cards equals
+                e.target.style.visibility = "hidden";//to hide image2 if two cards equals
 
                 test = 2;
-                TabEvent = [];
+                TabEvent = [];// To empty Tab2
                 // console.log(TabEvent);
                 total++;
                 //console.log(total);
 
-                if (total == 6) {
+                if (total == 6) { // Win system : when user founds all cards
                     document.getElementById("modal").style.top = "160px";
                     test = 2;
-                    reset();
+                    reset();//call function to begin new game
 
                 }
 
@@ -140,7 +135,7 @@ function playGame() {
             }
 
 
-            if (test < 0) {// LIMIT TWO CLIKS ON IMG
+            if (test < 0) {// To limit two clicks on cards
                 e.target.src = face;
             }
 
@@ -155,46 +150,43 @@ playGame();
 
 
 
-function game () {
+function game () { //To create img from Tab2 to page (with attributes)
     for (var j = 0; j < Tab2.length; j++) {
 
         document.getElementById("jeu" + [j]).innerHTML= "";
 
-        var container = document.getElementById("jeu" + [j]);//CONTAINER = ALL DIV NAMED "JEU"
+        var container = document.getElementById("jeu" + [j]);//container = all <div> called "jeu" +number
 
 
 
-        var img = document.createElement("img");//CREATE IMG WITH IMAGE RECTO FROM TAB2
+        var img = document.createElement("img");//Create IMG with img recto from Tab2
         img.className = "image";
-
-
         img.src = Tab2[j].recto;
 
-        //img.face = Tab2[j].recto;
         img.setAttribute("face",Tab2[j].recto);
         img.name = Tab2[j].verso;
         img.title = Tab2[j].titre;
 
         img.setAttribute("id",[j]);
-        container.appendChild(img);//SHOW IMG  IN HTML
-        console.log(img);
+        container.appendChild(img);
+        //console.log(img);
     }
 }
 
-    function reset(){ //FAIRE PAGE RESULTAT (Parties jouées, parties gagnées et parties perdues) + RESET
+    function reset(){ // Reset all game
 
         document.getElementById("rejouer").addEventListener("click", function (){
 
 
-            document.getElementById("modal").style.top = "-600px";//APPARITION POP UP
+            document.getElementById("modal").style.top = "-600px";//To show POP UP
 
-            document.getElementById("play").disabled = false; //remise en service play
+            document.getElementById("play").disabled = false; //play button : On
 
-            Tab2= [];//vider Tab2
+            Tab2= [];//EMPTY Tab2
 
             //console.log(Tab2);
 
-            Initiate();
+            Initiate(); // When pop up dispear, new game begin
 
         });
 
@@ -208,7 +200,5 @@ Initiate();
 
 
 
-//FAIRE TEST UNITAIRES
-//FAIRE DIAGRAMME
 
 
