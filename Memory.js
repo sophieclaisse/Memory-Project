@@ -98,13 +98,15 @@ function playGame() {
 
                 //console.log(e.target);
 
-
+                if (e.target != TabEvent[0]){
                 TabEvent.push(e.target);
                 console.log(TabEvent);
                 e.target.src = e.target.name;//CIBLE SOURCE IMG = CIBLE
                 test--;
+                }
 
-        if (TabEvent[0].id != TabEvent[1].id ) {
+    if(TabEvent[1] && TabEvent[0]) {
+        if (TabEvent[0].id != TabEvent[1].id) {
 
             if (test == 0 && TabEvent[0].title == TabEvent[1].title) { //WIN
 
@@ -143,7 +145,7 @@ function playGame() {
             }
 
         }
-
+    }
             });
         }
 //console.log(test);
