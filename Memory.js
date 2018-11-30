@@ -178,7 +178,7 @@ function game () { //To create img from Tab2 to page (with attributes)
         document.getElementById("rejouer").addEventListener("click", function (){
 
 
-            document.getElementById("modal").style.top = "-600px";//To show POP UP
+            document.getElementById("modal").style.top = "-1000px";//To show POP UP
 
             document.getElementById("play").disabled = false; //play button : On
 

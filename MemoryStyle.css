@@ -22,6 +22,12 @@ h2{
     color: white;
 }
 
+#rejouer {
+    background-color: white;
+    border-radius: 10px;
+    color: #00374c;
+}
+
 #play, #rejouer {
     width: 200px;
     height: 40px;
@@ -37,7 +43,7 @@ h2{
 }
 
 #modal {
-    height: 500px;
+    height: 1000px;
     width: 60%;
     background-color: #00374c;
     text-align: center;
@@ -45,7 +51,24 @@ h2{
     padding-top: 20px;
     border-radius: 10px;
     position: absolute;
-    top: -600px;
+    top: -1000px;
     left: 20%;
     transition: 0.5s;
+}
+
+#msg {
+    top: 300px;
+    font-size: 60px;
+    margin: 25px;
+}
+
+#resultat {
+    font-size: 25px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#Wimg {
+    height: 300px !important;
+    margin-top: 70px;
 }
