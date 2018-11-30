@@ -167,6 +167,7 @@ function game () { //To create img from Tab2 to page (with attributes)
         img.name = Tab2[j].verso;
         img.title = Tab2[j].titre;
 
+
         img.setAttribute("id",[j]);
         container.appendChild(img);
         //console.log(img);
