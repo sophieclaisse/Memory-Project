@@ -1,16 +1,25 @@
-body{
+body {
     text-align: center !important;
-    font-family: 'Pacifico', cursive !important;
+    font-family:  'Sedgwick Ave', cursive !important;
+    font-weight: bold;
     color: #00374c !important;
-    background-color: yellow!important;
+    background-color: yellow !important;
+    background-image: url("VISUELS/empreintes.png") !important;
 }
 
+
 h1{
-    margin: 25px !important;
+    margin-top: 55px !important;
 }
 
 h2{
     margin: 35px !important;
+}
+
+#play {
+    background-color: #00374c;
+    border-radius: 10px;
+    color: white;
 }
 
 #play, #rejouer {
