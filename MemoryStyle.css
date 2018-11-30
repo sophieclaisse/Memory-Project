@@ -23,15 +23,15 @@ h2{
 }
 
 #rejouer {
-    background-color: white;
-    border-radius: 10px;
-    color: #00374c;
+    background-color: white !important;
+    border-radius: 10px !important;
+    color: #00374c !important;
 }
 
 #play, #rejouer {
-    width: 200px;
-    height: 40px;
-    margin: 40px;
+    width: 200px !important;
+    height: 40px !important;
+    margin: 40px !important;
 }
 
 .image {
@@ -57,7 +57,7 @@ h2{
 }
 
 #msg {
-    top: 300px;
+    top: 70px;
     font-size: 60px;
     margin: 25px;
 }
